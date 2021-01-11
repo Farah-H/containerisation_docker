@@ -18,10 +18,19 @@
  
 # Docker commands:
 ```bash
+# pulling an image
 docker pull name_of_image
+
+# running an image (does 'pull' too if you haven't)
 docker run name_of_image
+
+# build container from image
 docker build -t name_of_image
+
+# commit to repo 
 docker commit name_of_image/container-id
+
+
 docker start container-id
 docker stop rm cotainer-id/name
 docker ps and ps -a # to check existing containers
@@ -30,3 +39,58 @@ docker ps and ps -a # to check existing containers
 docker exec -it name_of_container/id
 
 ```
+
+
+
+# Docker 
+![](diagram.png)
+![](https://docs.docker.com/engine/images/architecture.svg)
+
+## Difference between removing and stopping 
+- if you remove it the data is gone 
+- if you stop it it's just 'paused' 
+
+# On Windows
+```bash
+ alias docker="winpty docker"
+```
+
+## Log into container
+
+```bash
+#launch nginx on port 99
+docker run -d -p 99:80 nginx
+docker exec -it <container_id> bash
+
+# from here we can find the nginx conf files, for example, and make changes to them 
+cd /usr/share/nginx/html
+apt update
+apt install nano 
+nano index.html
+
+# make necessary edits, then CTRL X, Y, ENTER
+# you can then exit the machine 
+exit
+
+# and refresh the page, you will be able to see any changes you made to the index.html file
+# in real time
+```
+
+__Interview: How can you change the configuration of the container?__
+By *logging in* to the container
+
+
+
+# Task 
+Change nginx homepage without going into the container. 
+```/usr/share/nginx/html```
+
+__complete the task with the docker copy command.__
+
+```bash
+# the command is:
+docker cp your_file container_id:location_in_container
+# in this case
+docker cp index.html 4f959204d03f:usr/share/nginx/html
+```
+
