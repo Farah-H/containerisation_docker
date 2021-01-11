@@ -16,3 +16,17 @@
 - Docker engine connects the container with OS and only use the resources required
 - Vm works with Hyperviser
  
+# Docker commands:
+```bash
+docker pull name_of_image
+docker run name_of_image
+docker build -t name_of_image
+docker commit name_of_image/container-id
+docker start container-id
+docker stop rm cotainer-id/name
+docker ps and ps -a # to check existing containers
+
+# logging into container
+docker exec -it name_of_container/id
+
+```
