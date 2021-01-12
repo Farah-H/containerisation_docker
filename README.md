@@ -96,8 +96,8 @@ docker cp index.html 4f959204d03f:usr/share/nginx/html
 
 # Repository Management
 ```bash
+# commit changes to your repo
 docker commit <container_id> <user>/<repo_name>
->sha256:58931a6e51deb7281709930b959cb7146f5b4313223269864519ff7cc20935dd
 ```
 ```bash
 # check that there is an image of your container /repo 
@@ -114,3 +114,23 @@ docker push <user>/<repo_name>
 docker login 
 # and enter your username and password
 ```
+# Image managemet 
+```bash
+docker history <container_id>
+docker inspect <container_id>
+docker logs <container_id>
+```
+
+__Task: Find deault location of files__
+```bash
+docker exec -it <container_id> nash
+pwd 
+apt-get update
+cd /var/log/nginx/
+exit
+```
+
+```bash
+docker logs <container_id> >> nginx_logs.txt 
+docker cp nginx_logs.txt <container_id>:var/log/nginx/
+
