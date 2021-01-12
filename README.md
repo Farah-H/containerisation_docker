@@ -94,3 +94,23 @@ docker cp your_file container_id:location_in_container
 docker cp index.html 4f959204d03f:usr/share/nginx/html
 ```
 
+# Repository Management
+```bash
+docker commit <container_id> <user>/<repo_name>
+>sha256:58931a6e51deb7281709930b959cb7146f5b4313223269864519ff7cc20935dd
+```
+```bash
+# check that there is an image of your container /repo 
+docker images 
+```
+```bash
+# to push to your repo
+docker push <user>/<repo_name>
+# in this case:
+#docker push farahmh/containerisation_docker
+```
+```bash
+# If you get access denied just type 
+docker login 
+# and enter your username and password
+```
